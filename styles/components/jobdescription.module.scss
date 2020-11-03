@@ -1,0 +1,75 @@
+.jobdescription {
+      border-radius: 6px;
+      padding: 2rem;
+      display: grid;
+      grid-gap: 2rem;
+      width: 90vw;
+      transition: background 0.75s linear;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow-x: hidden;
+
+      h2 {
+            transition: color 0.75s linear;
+      }
+
+      span {
+            display: grid;
+            grid-template-columns: auto auto 1fr;
+            align-items: center;
+            grid-gap: 0.5rem;
+
+            div {
+                  width: 4px;
+                  height: 4px;
+                  border-radius: 50%;
+                  background: grey;
+            }
+      }
+
+      p {
+            color: #6E8098
+      }
+
+      h3 {
+            color: #5964E0;
+            font-weight: bold;
+      }
+
+      .description {
+            display: grid;
+            grid-gap: 1rem;
+            width: 100%;
+            line-height: 18px;
+
+            h3 {
+                  color: pink !important;
+            }
+
+            ul {
+                  list-style-type: square;
+                  list-style-position: outside;
+
+                  li {
+                        margin-bottom: 0.5rem;
+                        color: #6E8098;
+                  }
+            }
+      }
+
+      .details {
+            display: grid;
+            grid-gap: 0.5rem;
+      }
+}
+
+@media screen and (min-width: 700px) {
+      .jobdescription {
+            grid-template-columns: 1fr auto;
+
+
+            .description {
+                  grid-column: 1/3;
+            }
+      }
+}

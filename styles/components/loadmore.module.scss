@@ -1,0 +1,20 @@
+.loadmore {
+      text-decoration: none;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      background: #5964E0;
+      color: white;
+      width: 188px;
+      height: 4rem;
+      text-align: center;
+      &:hover {
+            color: #5964E0;
+            background: #C9C9C9;
+      }
+      display: block;
+      margin: 2rem auto;
+      border: none;
+      outline: none;
+      appearance: none;
+}

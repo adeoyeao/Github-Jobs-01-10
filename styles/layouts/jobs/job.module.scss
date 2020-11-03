@@ -1,0 +1,30 @@
+.job {
+  background-image: url("../../../public/assets/mobile/bg-pattern-header.svg");
+  background-size: contain;
+  background-position: top;
+  background-repeat: no-repeat;
+  transition: background-color 0.5s linear;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 6rem 5vw;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 700px) {
+  .job {
+    background-image: url("../../../public/assets/tablet/bg-pattern-header.svg");
+    background-size: contain;
+    background-position: top left;
+    background-repeat: no-repeat;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .job {
+    background-image: url("../../../public/assets/desktop/bg-pattern-header.svg");
+    background-size: contain;
+    background-position: top left;
+    background-repeat: no-repeat;
+  }
+}

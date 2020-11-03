@@ -2,8 +2,10 @@ const express = require("express")
 const passport = require("passport")
 const bodyParser = require("body-parser")
 const session = require("express-session")
+const https = require("https")
 const GitHubStrategy = require("passport-github2").Strategy
-const userModel = require("../model/userModel")
+const User = require("../model/userModel")
+const cors = require("cors")
 
 const router = express.Router()
 router.use(bodyParser.urlencoded({extended: true}))
@@ -18,11 +20,12 @@ router.use(session({
 
 router.use(passport.initialize())
 router.use(passport.session())
+router.use(cors())
 
-passport.use(userModel.createStrategy())
+passport.use(User.createStrategy())
 passport.serializeUser((user, done) => done(null, user.id))
 passport.deserializeUser((id, done) => {
-      userModel.findById(id, (err, user) => {
+      User.findById(id, (err, user) => {
             done(err, user)
       })
 })
@@ -30,10 +33,10 @@ passport.deserializeUser((id, done) => {
 passport.use(new GitHubStrategy({
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callback: "https://localhost:5000/auth/gitub/jobs"
+      callback: "http://localhost:5000/auth/github/jobs"
 },
 (accessToken, refreshToken, profile, done) => {
-      userModel.findOrCreate({ githubId: profile.id }, (err, user) => {
+      User.findOrCreate({ githubId: profile.id }, (err, user) => {
             return done(err, user)
       })
 }))
@@ -45,27 +48,49 @@ passport.authenticate("github", { failureRedirect: "/" }),
 (req, res) => {res.redirect("/jobs")})
 
 router.post("/register", (req, res) => {
-      userModel.register({email: req.body.email}, req.body.password, (err, user) => {
+      User.register({username: req.body.username}, req.body.password, (err, user) => {
             err ? (console.error(err), res.json({message: "Registration Failed"})) :
-            passport.authenticate("local")(req, res, () => res.redirect("/jobs"))
+            passport.authenticate("local")(req, res, () => {
+                  res.json({message: "Registration Succesful"})
+            })
       })
 })
 
 router.post("/login", (req, res) => {
-      const user = new userModel({
-            email: req.body.email,
+      const user = new User({
+            username: req.body.username,
             password: req.body.password
       })
 
       req.login(user, err => {
             err ? (console.error(err), res.json({message: "Login Failed"})) :
-            passport.authenticate("local")(req, res, () => res.redirect("/jobs"))
+            passport.authenticate("local")(req, res, () => {
+                  res.json({message: "Login Successful"})
+            })
       })
 })
 
 router.get("/logout", (req, res) => {
       req.logout()
       res.redirect("/")
+})
+
+router.post("/search", (req, res) => {
+      const description = req.body.description
+      const location = req.body.location
+      const fullTime = req.body.fullTime
+
+      const url = `https://jobs.github.com/positions.json?description=${description}&full_time=${fullTime}&location=${location}`
+
+      https.get(url, response => {
+            console.log(response.statusCode)
+            let data = ""
+            response.on("data", chunk => data += chunk)
+            response.on("end", () => {
+                  let jobsData = JSON.parse(data)
+                  res.send(jobsData)
+            })
+      })
 })
 
 module.exports = router

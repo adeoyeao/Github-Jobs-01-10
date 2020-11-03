@@ -1,0 +1,10 @@
+.navlink {
+      text-decoration: none;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      width: 188px;
+      cursor: pointer;
+      &:hover {
+            box-shadow: 0px 0px 20px 8px rgba(89, 100, 224, 0.2);
+      }
+}
