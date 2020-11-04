@@ -5,7 +5,6 @@ const session = require("express-session")
 const https = require("https")
 const GitHubStrategy = require("passport-github2").Strategy
 const User = require("../model/userModel")
-const cors = require("cors")
 
 const router = express.Router()
 router.use(bodyParser.urlencoded({extended: true}))
@@ -20,7 +19,6 @@ router.use(session({
 
 router.use(passport.initialize())
 router.use(passport.session())
-router.use(cors())
 
 passport.use(User.createStrategy())
 passport.serializeUser((user, done) => done(null, user.id))
@@ -83,7 +81,6 @@ router.post("/search", (req, res) => {
       const url = `https://jobs.github.com/positions.json?description=${description}&full_time=${fullTime}&location=${location}`
 
       https.get(url, response => {
-            console.log(response.statusCode)
             let data = ""
             response.on("data", chunk => data += chunk)
             response.on("end", () => {

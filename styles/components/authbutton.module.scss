@@ -1,11 +1,16 @@
 .authbutton {
       border-radius: 0.5rem;
       color: white;
-      background: blue;
+      background: #5964E0;
       width: 100%;
       padding: 0.75rem;
       cursor: pointer;
       outline: none;
       border: none;
       appearance: none;
+
+      &:hover {
+            background: #19202D;
+            font-weight: bold;
+      }
 }

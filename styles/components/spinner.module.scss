@@ -1,0 +1,71 @@
+.spinner {
+      position: fixed;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: grid;
+      place-items: center;
+      z-index: 15;
+
+      div {
+            width: 30vmin;
+            height: 30vmin;
+            border-radius: 50%;
+            border: 4px solid;
+            border-image-source: linear-gradient(90deg, rgba(89, 100, 224, 0), rgba(89, 100, 224, 1));
+            animation: spin1 2.5s ease-in-out infinite;
+            grid-row: 1/2;
+            grid-column: 1/2;
+      }
+
+      div:nth-of-type(2) {
+            animation: spin2 2.6s ease-in-out infinite;
+      }
+
+      div:nth-of-type(3) {
+            animation: spin3 2.85s ease-in-out infinite;
+      }
+
+      div:nth-of-type(4) {
+            animation: spin4 3s ease-in-out infinite;
+      }
+}
+
+@keyframes spin1 {
+      0% {
+            transform: rotate(0deg)
+      }
+      100% {
+            transform: rotate(360deg)
+      }
+}
+
+@keyframes spin2 {
+      0% {
+            transform: rotate(15deg)
+      }
+      100% {
+            transform: rotate(375deg)
+      }
+}
+
+@keyframes spin3 {
+      0% {
+            transform: rotate(25deg)
+      }
+      100% {
+            transform: rotate(385deg)
+      }
+}
+
+@keyframes spin4 {
+      0% {
+            transform: rotate(30deg)
+      }
+      100% {
+            transform: rotate(390deg)
+      }
+}
+

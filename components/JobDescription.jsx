@@ -17,13 +17,24 @@ const JobDescription = (props) => {
             return {__html: `${props.description}`}
       }
 
+      const today = new Date()
+      const dateCreated = new Date(props.created)
+      const difference = (today - dateCreated) / 3600000
+
+      const time = 
+      difference < 24 ?
+      `${Math.floor(difference)}h ago` :
+      difference / 24 < 7 ?
+      `${Math.floor(difference / 24)}d ago` :
+      `${Math.floor(difference / 24 /7)}w ago`
+
       return (
             <section 
             className={styles.jobdescription}
             style={jobStyle}>
                   <article className={styles.details}>
                   <span>
-                        <p>5h ago TBU</p>
+                        <p>{time}</p>
                               <div/>
                         <p>{props.type}</p>
                   </span>

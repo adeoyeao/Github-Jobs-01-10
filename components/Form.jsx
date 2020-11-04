@@ -4,8 +4,12 @@ import Input from "./Input"
 import Icon from "./Icon"
 import styles from "../styles/components/form.module.scss"
 import AuthButton from "./AuthButton"
+import { useDispatch } from "react-redux"
+import { loadingTrue } from "../redux/actions"
 
 const Form = () => {
+      const dispatch = useDispatch()
+
       const [ mode, setMode ] = useState("login")
       const [ input, setInput ] = useState({
             username: "",
@@ -48,8 +52,10 @@ const Form = () => {
                         })
                   })
                   .then(res => res.json())
-                  .then(data => setHeading(data.message))
-                  .then(() => setTimeout(() => router.push("/jobs"), 1500))
+                  .then(data => {
+                        setHeading(data.message); 
+                        dispatch(loadingTrue())})
+                  .then(() => router.push("/jobs"))
                   .catch(() => setHeading(`${name} Failed`))
             )
       }

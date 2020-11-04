@@ -1,5 +1,5 @@
-import { jobsRequest, jobsFailure, jobsSuccess } from "./jobsactions"
-import { FETCH_JOBS_REQUEST, FETCH_JOBS_FAILURE, FETCH_JOBS_SUCCESS } from "./jobstypes"
+import { jobsRequest, jobsFailure, jobsSuccess, loadingTrue, loadingFalse } from "./jobsactions"
+import { FETCH_JOBS_REQUEST, FETCH_JOBS_FAILURE, FETCH_JOBS_SUCCESS, LOADING_TRUE, LOADING_FALSE } from "./jobstypes"
 
 const initialState = {
       loading: false,
@@ -24,6 +24,14 @@ const jobsReducer = (state = initialState, action) => {
                   loading: false,
                   data: action.jobs,
                   error: ""
+            }
+            case LOADING_FALSE: return {
+                  ...state,
+                  loading: false
+            }
+            case LOADING_TRUE: return {
+                  ...state,
+                  loading: true
             }
             default: return state
       }

@@ -10,8 +10,8 @@ const JobTitle = (props) => {
       { backgroundColor: "white" }
 
       const headerStyle = theme === "dark" ?
-      { color: "white" } :
-      { color: "#19202D"}
+      { color: "white", maxWidth: "100%" } :
+      { color: "#19202D", maxWidth: "100%"}
 
       return (
             <span 

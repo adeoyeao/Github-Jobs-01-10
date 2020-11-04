@@ -1,62 +1,83 @@
 .search {
-      display: grid;
-      margin-bottom: 2rem;
-      grid-gap: 0.25rem;
-      input,
-      span {
-            display: block;
-            border-radius: 0;
-            padding: 1rem;
-            width: 100%;
-            border: 1px solid grey;
-            outline: none;
-            appearance: none;
-            background:white;
+  display: grid;
+  margin-bottom: 2rem;
+  input,
+  span {
+    display: block;
+    border-radius: 0;
+    padding: 0 1rem;
+    height: 3.75rem;
+    width: 100%;
+    border: 1px solid #5964e0;
+    outline: none;
+    appearance: none;
+    background: white;
+    font-size: 14px;
+    color: #6e8098;
+    transition: background 0.75s linear;
+    p {
+      font-size: 14px;
+      color: #6e8098;
+    }
+  }
+
+  span {
+    border-radius: 0 0 0.5rem 0.5rem;
+    div {
+      height: 12px;
+      width: 12px;
+      border: 2px solid #5964e0;
+      cursor: pointer;
+    }
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 1rem;
+    align-items: center;
+
+    button {
+      padding: 0.5rem;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      appearance: none;
+      background: #5964e0;
+      color: white;
+      border-radius: 0.25rem;
+
+      &:hover {
+        color: #5964e0;
+        background: #c9c9c9;
       }
+    }
+  }
 
-      span {
-            div {
-                  height: 12px;
-                  width: 12px;
-                  border: 2px solid grey;
-                  cursor: pointer;
-            }
-
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            grid-gap: 1rem;
-            align-items: center;
-
-            button {
-                  padding: 0.25rem;
-                  cursor: pointer;
-            }
-      }
-
-
+  input:nth-of-type(1) {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
 }
 
 @media screen and (min-width: 700px) {
-      .search {
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 0rem;
+  .search {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0rem;
 
-            input,
-            span {
-                  border: none;
-            }
+    input,
+    span {
+      border: none;
+    }
 
-            input:nth-of-type(1) {
-                  border-radius: 0.25rem 0 0 0.25rem;
-            }
+    input:nth-of-type(1) {
+      border-radius: 0.25rem 0 0 0.25rem;
+    }
 
-            input:nth-of-type(2) {
-                  border-left: 2px solid grey;
-                  border-right: 2px solid grey;
-            }
+    input:nth-of-type(2) {
+      border-left: 1px solid #5964e0;
+      border-right: 1px solid #5964e0;
+    }
 
-            span {
-                  border-radius: 0 0.25rem 0.25rem 0
-            }
-      }
+    span {
+      border-radius: 0 0.25rem 0.25rem 0;
+    }
+  }
 }

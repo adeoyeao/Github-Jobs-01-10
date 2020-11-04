@@ -9,6 +9,7 @@ import styles from "../../styles/layouts/jobs/index.module.scss"
 import LearnButton from "../../components/LearnButton"
 import Card from "../../components/Card"
 import Search from "../../components/Search"
+import Spinner from "../../components/Spinner"
 
 const Index = ({ posts }) => {
       const dispatch = useDispatch()
@@ -26,6 +27,10 @@ const Index = ({ posts }) => {
       { backgroundColor: "#121721" } : 
       { backgroundColor: "#F4F6F8" }
 
+      const headerStyle = theme === "dark" ? 
+      { color: "#F4F6F8", textAlign: "center" } : 
+      { color: "#121721", textAlign: "center" }
+
       return (
             <main 
             style={indexStyle}
@@ -33,7 +38,9 @@ const Index = ({ posts }) => {
             <Header />
             <Search />
             <section>
-                { jobs.map((job, idx) => 
+                { jobs.length === 0 ?
+                <h1 style={headerStyle}>No Jobs Found</h1> :
+                jobs.map((job, idx) => 
                       idx < items && 
                       <Card 
                       created={job.created_at}
@@ -46,6 +53,7 @@ const Index = ({ posts }) => {
                 ) }
             </section>
             <LearnButton />
+            {loading && <Spinner />}
             </main>
       )
 }

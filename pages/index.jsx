@@ -4,6 +4,7 @@ import { useSelector } from "react-redux"
 import styles from "../styles/layouts/index.module.scss"
 import Form from "../components/Form"
 import Header from "../components/Header"
+import Spinner from "../components/Spinner"
 
 const Index = () => {
       const [ viewHeight, setViewHeight ] = useState()
@@ -23,6 +24,7 @@ const Index = () => {
       }
 
       const theme = useSelector(state => state.theme.mode)
+      const loading = useSelector(state => state.jobs.loading)
 
       theme === "dark" ? 
       indexStyle.backgroundColor = "#121721" :
@@ -32,6 +34,7 @@ const Index = () => {
             <main className={styles.index} style={indexStyle}>
                   <Header />
                   <Form />
+                  {loading && <Spinner />}
             </main>
       )
 }

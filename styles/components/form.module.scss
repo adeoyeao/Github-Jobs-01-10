@@ -5,7 +5,7 @@
       display: grid;
       grid-gap: 2rem;
       align-items: center;
-      min-width: 60vmin;
+      width: 100%;
 
       .inputs {
             display: grid;
@@ -32,5 +32,11 @@
 
       h1, p {
             text-align: center;
+      }
+}
+
+@media screen and (min-width: 700px) {
+      .form {
+            width: 60vmin
       }
 }

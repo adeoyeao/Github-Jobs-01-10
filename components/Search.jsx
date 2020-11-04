@@ -1,10 +1,11 @@
 import styles from "../styles/components/search.module.scss"
 import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { jobsRequest, jobsSuccess, jobsFailure } from "../redux/actions"
 
 const Search = () => {
       const dispatch = useDispatch()
+      const theme = useSelector(state => state.theme.mode)
 
       const [ input, setInput ] = useState({
             title: "",
@@ -25,6 +26,7 @@ const Search = () => {
                   ...prev,
                   fullTime: !prev.fullTime
             }))
+            console.log(input.fullTime)
       }
 
       const handleSubmit = (e) => {
@@ -58,6 +60,12 @@ const Search = () => {
             }))
       }
 
+      const searchStyle = theme === "dark" ?
+      { background: "#19202D" } :
+      { background: "white" }
+
+      const fullTimeStyle = input.fullTime ? {background: "grey"} : {background: "none"}
+
       return (
             <form className={styles.search}
             onSubmit={handleSubmit}>
@@ -66,17 +74,20 @@ const Search = () => {
                   onChange={handleChange}
                   value={input.title}
                   placeholder="Filter by title..."
-                  autoComplete="off"/>
+                  autoComplete="off"
+                  style={searchStyle}/>
                   <input 
                   name="location"
                   onChange={handleChange}
                   value={input.location}
                   placeholder="Filter by location..."
-                  autoComplete="off"/>
-                  <span>
+                  autoComplete="off"
+                  style={searchStyle}/>
+                  <span style={searchStyle}>
                         <div 
-                        onClick={handleClick}/>
-                        <p>Full Time</p> 
+                        onClick={handleClick}
+                        style={fullTimeStyle}/>
+                        <p>Full Time Only</p> 
                         <button>Search</button>
                   </span>
             </form>
