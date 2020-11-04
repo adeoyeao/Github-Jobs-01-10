@@ -1,0 +1,25 @@
+.logout {
+  height: 3rem;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: rgba(25, 32, 45, 0.652);
+  display: grid;
+  place-items: center;
+
+  button {
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    appearance: none;
+    border-radius: 0.5rem;
+    color: white;
+    background: #5964e0;
+    cursor: pointer;
+    &:hover {
+      background: #19202d;
+      font-weight: bold;
+    }
+  }
+}

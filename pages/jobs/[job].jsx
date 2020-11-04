@@ -7,6 +7,7 @@ import Spinner from "../../components/Spinner"
 import JobTitle from "../../components/JobTitle"
 import JobDescription from "../../components/JobDescription"
 import styles from "../../styles/layouts/jobs/job.module.scss"
+import Logout from "../../components/Logout"
 
 import { loadingFalse } from "../../redux/actions"
 
@@ -38,6 +39,7 @@ const Job = ({ post }) => {
                   description={post.description}
                   url={post.url}/>
             {loading && <Spinner/>}
+            <Logout />
             </main>
       )
 }

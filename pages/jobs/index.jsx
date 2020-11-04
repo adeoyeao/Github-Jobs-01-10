@@ -10,6 +10,7 @@ import LearnButton from "../../components/LearnButton"
 import Card from "../../components/Card"
 import Search from "../../components/Search"
 import Spinner from "../../components/Spinner"
+import Logout from "../../components/Logout"
 
 const Index = ({ posts }) => {
       const dispatch = useDispatch()
@@ -54,6 +55,7 @@ const Index = ({ posts }) => {
             </section>
             <LearnButton />
             {loading && <Spinner />}
+            <Logout />
             </main>
       )
 }

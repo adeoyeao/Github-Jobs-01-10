@@ -70,7 +70,7 @@ router.post("/login", (req, res) => {
 
 router.get("/logout", (req, res) => {
       req.logout()
-      res.redirect("/")
+      res.end()
 })
 
 router.post("/search", (req, res) => {
