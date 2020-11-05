@@ -1,12 +1,10 @@
 {
   "name": "GithubJobs",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "dev": "nodemon server/app.js",
+    "dev": "nodem server/app.js",
     "build": "next build",
-    "start": "NODE_DEV=production node server/app.js"
+    "start": "NODE_ENV=production node server/app.jsT"
   },
   "keywords": [],
   "author": "",
@@ -30,5 +28,9 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "sass": "^1.28.0"
-  }
+  },
+  "cacheDirectories": [
+    "node_modules/",
+    ".next/cache/"
+  ]
 }

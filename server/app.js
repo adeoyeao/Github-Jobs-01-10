@@ -3,7 +3,7 @@ const next = require("next")
 const mongoose = require("mongoose")
 
 const PORT = process.env.PORT || 5000
-const dev = process.env.NODE_DEV !== "production"
+const dev = process.env.NODE_ENV !== "production"
 
 const nextApp = next({dev})
 const handle = nextApp.getRequestHandler()
