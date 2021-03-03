@@ -31,7 +31,7 @@ passport.deserializeUser((id, done) => {
 passport.use(new GitHubStrategy({
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callback: "http://localhost:5000/auth/github/jobs"
+      callback: "http://githubjobs-dev.herokuapp.com/auth/github/jobs"
 },
 (accessToken, refreshToken, profile, done) => {
       User.findOrCreate({ githubId: profile.id }, (err, user) => {
